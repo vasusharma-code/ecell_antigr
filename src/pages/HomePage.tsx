@@ -37,7 +37,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, ease: easings.entry, delay: 0.2 }}
           >
             Bring the{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-green-400">
+            <span className="text-[#E65C00]">
               Innovation
             </span>
             <br />
@@ -61,7 +61,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, ease: easings.entry, delay: 0.6 }}
           >
             <motion.button
-              className="inline-flex items-center px-8 py-4 text-lg font-medium text-[#0b0b0d] bg-cyan-400 rounded-lg hover:bg-cyan-300 transition-colors duration-200"
+              className="inline-flex items-center px-8 py-4 text-lg font-bold text-white bg-[#E65C00] rounded-lg hover:bg-[#ff6a00] transition-colors duration-200"
               whileHover={{ y: -2 }}
               transition={{ duration: 0.2, ease: easings.primary }}
             >
@@ -76,20 +76,20 @@ export default function HomePage() {
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-center mb-16"
+            className="text-4xl md:text-5xl font-black text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: easings.entry }}
             viewport={{ once: true }}
           >
-            Our Core Values
+            <span className="text-[#E65C00]">OUR CORE VALUES</span>
           </motion.h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                className="text-center p-8 rounded-lg bg-gray-900/30 backdrop-blur-sm border border-gray-800/20"
+                className="text-center p-8 rounded-lg bg-[#1a1a1a] border border-[#333]"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{
@@ -100,10 +100,10 @@ export default function HomePage() {
                 whileHover={{ y: -4 }}
                 viewport={{ once: true }}
               >
-                <div className="w-16 h-16 mx-auto mb-6 p-4 rounded-lg bg-cyan-400/10 text-cyan-400">
+                <div className="w-16 h-16 mx-auto mb-6 p-4 rounded-lg bg-[#E65C00]/10 text-[#E65C00]">
                   <feature.icon className="w-full h-full" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-white">{feature.title}</h3>
                 <p className="text-gray-400 leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}

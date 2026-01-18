@@ -41,7 +41,9 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: easings.entry }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">About E-Cell VIPS</h1>
+            <h1 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
+              <span className="text-[#E65C00]">ABOUT US</span>
+            </h1>
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
               The Entrepreneurship Cell of VIPS is dedicated to cultivating an innovative 
               mindset and entrepreneurial spirit among students, preparing them for the 
@@ -54,7 +56,7 @@ export default function AboutPage() {
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                className="text-center p-8 rounded-lg bg-gray-900/30 backdrop-blur-sm border border-gray-800/20"
+                className="text-center p-8 rounded-lg bg-[#1a1a1a] border border-[#333]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -64,10 +66,10 @@ export default function AboutPage() {
                 }}
                 whileHover={{ y: -4 }}
               >
-                <div className="w-16 h-16 mx-auto mb-6 p-4 rounded-lg bg-cyan-400/10 text-cyan-400">
+                <div className="w-16 h-16 mx-auto mb-6 p-4 rounded-lg bg-[#E65C00]/10 text-[#E65C00]">
                   <value.icon className="w-full h-full" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-white">{value.title}</h3>
                 <p className="text-gray-400 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
@@ -81,7 +83,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, ease: easings.entry }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-center mb-12">Our Story</h2>
+            <h2 className="text-4xl font-black text-center mb-12 text-[#E65C00]">OUR STORY</h2>
             <div className="max-w-4xl mx-auto text-gray-300 leading-relaxed space-y-6 text-lg">
               <p>
                 Founded in 2020, E-Cell VIPS emerged from a vision to bridge the gap between 
@@ -110,12 +112,12 @@ export default function AboutPage() {
             transition={{ duration: 0.6, ease: easings.entry }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-center mb-12">Our Principles</h2>
+            <h2 className="text-4xl font-black text-center mb-12 text-[#E65C00]">OUR PRINCIPLES</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
               {principles.map((principle, index) => (
                 <motion.div
                   key={principle}
-                  className="p-4 rounded-lg bg-gray-900/30 backdrop-blur-sm border border-gray-800/20 text-center"
+                  className="p-4 rounded-lg bg-[#1a1a1a] border border-[#333] text-center"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{
@@ -126,7 +128,7 @@ export default function AboutPage() {
                   whileHover={{ scale: 1.05 }}
                   viewport={{ once: true }}
                 >
-                  <span className="font-medium text-cyan-400">{principle}</span>
+                  <span className="font-medium text-[#E65C00]">{principle}</span>
                 </motion.div>
               ))}
             </div>

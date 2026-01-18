@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Calendar, Users, Trophy, ArrowRight } from 'lucide-react';
+import { Calendar, Users, ArrowRight } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
 import { easings } from '../config/animations';
 
@@ -49,7 +49,9 @@ export default function EventsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: easings.entry }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Events</h1>
+            <h1 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
+              <span className="text-[#E65C00]">EVENTS</span>
+            </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Join our exciting events designed to inspire, educate, and connect
               the entrepreneurial community at VIPS.
@@ -60,7 +62,7 @@ export default function EventsPage() {
             {events.map((event, index) => (
               <motion.div
                 key={event.title}
-                className="p-8 rounded-lg bg-gray-900/30 backdrop-blur-sm border border-gray-800/20 group"
+                className="p-8 rounded-lg bg-[#1a1a1a] border border-[#333] group"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -74,7 +76,7 @@ export default function EventsPage() {
                   <span
                     className={`px-3 py-1 rounded-full text-sm font-medium ${
                       event.status === 'upcoming'
-                        ? 'bg-cyan-400/10 text-cyan-400'
+                        ? 'bg-[#E65C00]/10 text-[#E65C00]'
                         : 'bg-gray-600/20 text-gray-400'
                     }`}
                   >
@@ -91,7 +93,7 @@ export default function EventsPage() {
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-cyan-400 transition-colors duration-200">
+                <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[#E65C00] transition-colors duration-200">
                   {event.title}
                 </h3>
                 
@@ -111,7 +113,7 @@ export default function EventsPage() {
                 </div>
 
                 <motion.button
-                  className="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium group-hover:gap-3 gap-2 transition-all duration-200"
+                  className="inline-flex items-center text-[#E65C00] hover:text-[#ff6a00] font-medium group-hover:gap-3 gap-2 transition-all duration-200"
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2, ease: easings.primary }}
                 >

@@ -1,12 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ===== Base Styles ===== */
+
+* {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+html,
+body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
 /* ===== Cinematic Loader Styles ===== */
 
-/* No gimmicks - just smooth, premium animation support */
-
-/* Ensure smooth GPU-accelerated rendering */
 .ecell-loader-text {
   will-change: transform, opacity;
   backface-visibility: hidden;
@@ -14,14 +26,45 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Content wrapper for synchronized reveal */
 .ecell-content-wrapper {
   will-change: transform, opacity, filter;
   backface-visibility: hidden;
 }
 
-/* Prevent layout shift during transitions */
-html,
-body {
-  overflow-x: hidden;
+/* ===== Typography ===== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* ===== Scrollbar ===== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E65C00;
+}
+
+/* ===== Selection ===== */
+
+::selection {
+  background: #E65C00;
+  color: #000;
 }

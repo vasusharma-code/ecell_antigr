@@ -65,7 +65,9 @@ export default function MembersPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: easings.entry }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Team</h1>
+            <h1 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
+              <span className="text-[#E65C00]">TEAM</span>
+            </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Meet the passionate individuals driving innovation and entrepreneurship 
               at VIPS. Our diverse team brings together unique perspectives and skills 
@@ -77,7 +79,7 @@ export default function MembersPage() {
             {teamMembers.map((member, index) => (
               <motion.div
                 key={member.name}
-                className="group relative p-6 rounded-lg bg-gray-900/30 backdrop-blur-sm border border-gray-800/20"
+                className="group relative p-6 rounded-lg bg-[#1a1a1a] border border-[#333]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -92,16 +94,16 @@ export default function MembersPage() {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-24 h-24 mx-auto rounded-full object-cover border-2 border-gray-700 group-hover:border-cyan-400 transition-colors duration-200"
+                      className="w-24 h-24 mx-auto rounded-full object-cover border-2 border-[#333] group-hover:border-[#E65C00] transition-colors duration-200"
                     />
-                    <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full bg-gradient-to-t from-cyan-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                    <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full bg-gradient-to-t from-[#E65C00]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-1 group-hover:text-cyan-400 transition-colors duration-200">
+                  <h3 className="text-xl font-bold mb-1 text-white group-hover:text-[#E65C00] transition-colors duration-200">
                     {member.name}
                   </h3>
                   
-                  <p className="text-cyan-400 font-medium mb-1">{member.role}</p>
+                  <p className="text-[#E65C00] font-medium mb-1">{member.role}</p>
                   
                   <p className="text-sm text-gray-400 mb-2">
                     {member.year} • {member.department}
@@ -113,21 +115,21 @@ export default function MembersPage() {
                   
                   <div className="flex items-center justify-center gap-4">
                     <motion.button
-                      className="p-2 rounded-full bg-gray-800/50 hover:bg-cyan-400/20 text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                      className="p-2 rounded-full bg-[#222] hover:bg-[#E65C00]/20 text-gray-400 hover:text-[#E65C00] transition-colors duration-200"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <Linkedin className="w-4 h-4" />
                     </motion.button>
                     <motion.button
-                      className="p-2 rounded-full bg-gray-800/50 hover:bg-cyan-400/20 text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                      className="p-2 rounded-full bg-[#222] hover:bg-[#E65C00]/20 text-gray-400 hover:text-[#E65C00] transition-colors duration-200"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <Mail className="w-4 h-4" />
                     </motion.button>
                     <motion.button
-                      className="p-2 rounded-full bg-gray-800/50 hover:bg-cyan-400/20 text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                      className="p-2 rounded-full bg-[#222] hover:bg-[#E65C00]/20 text-gray-400 hover:text-[#E65C00] transition-colors duration-200"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                     >

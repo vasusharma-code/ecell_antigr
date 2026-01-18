@@ -71,7 +71,9 @@ export default function CollaborationsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: easings.entry }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Collaborations</h1>
+            <h1 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
+              <span className="text-[#E65C00]">COLLABORATIONS</span>
+            </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               We partner with industry leaders, academic institutions, and 
               government organizations to create opportunities for our community.
@@ -83,7 +85,7 @@ export default function CollaborationsPage() {
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className="text-center p-8 rounded-lg bg-gray-900/30 backdrop-blur-sm border border-gray-800/20"
+                className="text-center p-8 rounded-lg bg-[#1a1a1a] border border-[#333]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -93,10 +95,10 @@ export default function CollaborationsPage() {
                 }}
                 whileHover={{ y: -4 }}
               >
-                <div className="w-16 h-16 mx-auto mb-4 p-4 rounded-lg bg-cyan-400/10 text-cyan-400">
+                <div className="w-16 h-16 mx-auto mb-4 p-4 rounded-lg bg-[#E65C00]/10 text-[#E65C00]">
                   <stat.icon className="w-full h-full" />
                 </div>
-                <h3 className="text-4xl font-bold mb-2 text-cyan-400">{stat.value}</h3>
+                <h3 className="text-4xl font-bold mb-2 text-[#E65C00]">{stat.value}</h3>
                 <p className="text-gray-400 font-medium">{stat.label}</p>
               </motion.div>
             ))}
@@ -107,7 +109,7 @@ export default function CollaborationsPage() {
             {collaborations.map((collaboration, index) => (
               <motion.div
                 key={collaboration.name}
-                className="p-6 rounded-lg bg-gray-900/30 backdrop-blur-sm border border-gray-800/20 group"
+                className="p-6 rounded-lg bg-[#1a1a1a] border border-[#333] group"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -118,16 +120,16 @@ export default function CollaborationsPage() {
                 whileHover={{ y: -4 }}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-cyan-400/10 text-cyan-400">
+                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-[#E65C00]/10 text-[#E65C00]">
                     {collaboration.category}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors duration-200">
+                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#E65C00] transition-colors duration-200">
                   {collaboration.name}
                 </h3>
                 
-                <p className="text-sm text-cyan-400 mb-3 font-medium">
+                <p className="text-sm text-[#E65C00] mb-3 font-medium">
                   {collaboration.type}
                 </p>
                 
@@ -136,7 +138,7 @@ export default function CollaborationsPage() {
                 </p>
 
                 <motion.button
-                  className="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium text-sm group-hover:gap-2 gap-1 transition-all duration-200"
+                  className="inline-flex items-center text-[#E65C00] hover:text-[#ff6a00] font-medium text-sm group-hover:gap-2 gap-1 transition-all duration-200"
                   whileHover={{ x: 2 }}
                   transition={{ duration: 0.2, ease: easings.primary }}
                 >

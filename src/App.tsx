@@ -26,10 +26,18 @@ function AppContent() {
 
   const handleLoaderComplete = useCallback(() => {
     setShowLoader(false);
-    setTimeout(() => {
-      setContentReady(true);
-    }, 50);
+    setContentReady(true); // Immediately set content ready - no delay
   }, []);
+
+  // Start revealing content earlier (1.4s into animation when growth phase starts)
+  useEffect(() => {
+    if (showLoader) {
+      const earlyRevealTimer = setTimeout(() => {
+        setContentReady(true);
+      }, 1400); // Start at same time as growth phase
+      return () => clearTimeout(earlyRevealTimer);
+    }
+  }, [showLoader, loaderKey]);
 
   // Trigger loader on route change
   useEffect(() => {
@@ -43,7 +51,7 @@ function AppContent() {
   }, [location.pathname, currentPath]);
 
   return (
-    <div className="min-h-screen bg-[#0b0b0d] text-[#f2f2f2] relative overflow-hidden">
+    <div className="min-h-screen bg-[#0a0a0a] text-white relative overflow-hidden">
       {/* EcellVips Loader - Shows on every route */}
       {showLoader && (
         <EcellVipsLoader 
@@ -52,16 +60,16 @@ function AppContent() {
         />
       )}
 
-      {/* Main content wrapper */}
+      {/* Main content wrapper - reveals simultaneously with loader growth */}
       <motion.div
         className="relative min-h-screen"
         style={{ zIndex: 10 }}
-        initial={{ opacity: 0, scale: 1.05, filter: 'blur(12px)' }}
+        initial={{ opacity: 0, scale: 1.02, filter: 'blur(8px)' }}
         animate={contentReady ? { 
           opacity: 1, 
           scale: 1, 
           filter: 'blur(0px)' 
-        } : { opacity: 0, scale: 1.05, filter: 'blur(12px)' }}
+        } : { opacity: 0, scale: 1.02, filter: 'blur(8px)' }}
         transition={{
           duration: 0.8,
           ease: CINEMATIC_EASING,
