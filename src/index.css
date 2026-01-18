@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Cinematic Loader Styles ===== */
+
+/* No gimmicks - just smooth, premium animation support */
+
+/* Ensure smooth GPU-accelerated rendering */
+.ecell-loader-text {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Content wrapper for synchronized reveal */
+.ecell-content-wrapper {
+  will-change: transform, opacity, filter;
+  backface-visibility: hidden;
+}
+
+/* Prevent layout shift during transitions */
+html,
+body {
+  overflow-x: hidden;
+}
