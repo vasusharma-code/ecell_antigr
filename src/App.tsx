@@ -29,12 +29,12 @@ function AppContent() {
     setContentReady(true); // Immediately set content ready - no delay
   }, []);
 
-  // Start revealing content earlier (1.4s into animation when growth phase starts)
+  // Start revealing content earlier (0.7s into animation when growth phase starts)
   useEffect(() => {
     if (showLoader) {
       const earlyRevealTimer = setTimeout(() => {
         setContentReady(true);
-      }, 1400); // Start at same time as growth phase
+      }, 700); // Start at same time as growth phase
       return () => clearTimeout(earlyRevealTimer);
     }
   }, [showLoader, loaderKey]);
@@ -51,7 +51,7 @@ function AppContent() {
   }, [location.pathname, currentPath]);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white relative overflow-hidden">
+    <div className="min-h-screen bg-neutral-900 text-white relative overflow-hidden">
       {/* EcellVips Loader - Shows on every route */}
       {showLoader && (
         <EcellVipsLoader 

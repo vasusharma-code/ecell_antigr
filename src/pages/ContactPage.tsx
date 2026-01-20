@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
-import { easings } from '../config/animations';
+
+const fadeIn = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+};
 
 const contactInfo = [
   {
@@ -31,17 +35,34 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto">
           <motion.div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: easings.entry }}
+            initial="initial"
+            animate="animate"
           >
-            <h1 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
-              <span className="text-[#E65C00]">CONTACT US</span>
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <motion.div
+              variants={fadeIn}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center px-4 py-2 mb-6 border border-primary/30 rounded-full"
+            >
+              <Mail className="w-4 h-4 mr-2 text-primary" />
+              <span className="text-sm font-medium text-neutral-400">Contact</span>
+            </motion.div>
+
+            <motion.h1
+              variants={fadeIn}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            >
+              Get in <span className="text-primary">Touch</span>
+            </motion.h1>
+            
+            <motion.p
+              variants={fadeIn}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-lg text-neutral-400 max-w-3xl mx-auto leading-relaxed"
+            >
               Have questions about our programs or want to get involved? 
-              We'd love to hear from you and help you on your entrepreneurial journey.
-            </p>
+              We would love to hear from you and help you on your entrepreneurial journey.
+            </motion.p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -49,29 +70,25 @@ export default function ContactPage() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: easings.entry, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h2 className="text-3xl font-bold mb-8 text-white">Get in Touch</h2>
-              <div className="space-y-8">
+              <h2 className="text-2xl font-bold mb-8 text-white">Contact Information</h2>
+              <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={info.title}
-                    className="flex items-start gap-4"
+                    className="flex items-start gap-4 p-4 bg-neutral-900/50 border border-neutral-800 rounded-xl transition-all duration-300 hover:border-primary/30"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.6,
-                      ease: easings.entry,
-                      delay: 0.3 + index * 0.1,
-                    }}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   >
-                    <div className="w-12 h-12 p-3 rounded-lg bg-[#E65C00]/10 text-[#E65C00] flex-shrink-0">
+                    <div className="w-12 h-12 p-3 rounded-xl bg-primary/10 text-primary flex-shrink-0">
                       <info.icon className="w-full h-full" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold mb-1 text-white">{info.title}</h3>
-                      <p className="text-[#E65C00] font-medium mb-1">{info.details}</p>
-                      <p className="text-gray-400 text-sm">{info.subtitle}</p>
+                      <h3 className="text-lg font-semibold mb-1 text-white">{info.title}</h3>
+                      <p className="text-primary font-medium mb-1">{info.details}</p>
+                      <p className="text-neutral-500 text-sm">{info.subtitle}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -82,107 +99,80 @@ export default function ContactPage() {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: easings.entry, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: easings.entry, delay: 0.5 }}
-                  >
-                    <label htmlFor="firstName" className="block text-sm font-medium mb-2 text-white">
+              <form className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="firstName" className="block text-sm font-medium mb-2 text-neutral-300">
                       First Name
                     </label>
                     <input
                       type="text"
                       id="firstName"
-                      className="w-full px-4 py-3 rounded-lg bg-[#1a1a1a] border border-[#333] text-white placeholder-gray-500 focus:border-[#E65C00] focus:ring-1 focus:ring-[#E65C00] focus:outline-none transition-colors duration-200"
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors duration-200"
                       placeholder="Enter your first name"
                     />
-                  </motion.div>
+                  </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: easings.entry, delay: 0.6 }}
-                  >
-                    <label htmlFor="lastName" className="block text-sm font-medium mb-2 text-white">
+                  <div>
+                    <label htmlFor="lastName" className="block text-sm font-medium mb-2 text-neutral-300">
                       Last Name
                     </label>
                     <input
                       type="text"
                       id="lastName"
-                      className="w-full px-4 py-3 rounded-lg bg-[#1a1a1a] border border-[#333] text-white placeholder-gray-500 focus:border-[#E65C00] focus:ring-1 focus:ring-[#E65C00] focus:outline-none transition-colors duration-200"
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors duration-200"
                       placeholder="Enter your last name"
                     />
-                  </motion.div>
+                  </div>
                 </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, ease: easings.entry, delay: 0.7 }}
-                >
-                  <label htmlFor="email" className="block text-sm font-medium mb-2 text-white">
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium mb-2 text-neutral-300">
                     Email
                   </label>
                   <input
                     type="email"
                     id="email"
-                    className="w-full px-4 py-3 rounded-lg bg-[#1a1a1a] border border-[#333] text-white placeholder-gray-500 focus:border-[#E65C00] focus:ring-1 focus:ring-[#E65C00] focus:outline-none transition-colors duration-200"
+                    className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors duration-200"
                     placeholder="Enter your email"
                   />
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, ease: easings.entry, delay: 0.8 }}
-                >
-                  <label htmlFor="subject" className="block text-sm font-medium mb-2 text-white">
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium mb-2 text-neutral-300">
                     Subject
                   </label>
                   <input
                     type="text"
                     id="subject"
-                    className="w-full px-4 py-3 rounded-lg bg-[#1a1a1a] border border-[#333] text-white placeholder-gray-500 focus:border-[#E65C00] focus:ring-1 focus:ring-[#E65C00] focus:outline-none transition-colors duration-200"
-                    placeholder="What's this about?"
+                    className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors duration-200"
+                    placeholder="What is this about?"
                   />
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, ease: easings.entry, delay: 0.9 }}
-                >
-                  <label htmlFor="message" className="block text-sm font-medium mb-2 text-white">
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium mb-2 text-neutral-300">
                     Message
                   </label>
                   <textarea
                     id="message"
                     rows={4}
-                    className="w-full px-4 py-3 rounded-lg bg-[#1a1a1a] border border-[#333] text-white placeholder-gray-500 focus:border-[#E65C00] focus:ring-1 focus:ring-[#E65C00] focus:outline-none transition-colors duration-200 resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors duration-200 resize-none"
                     placeholder="Tell us more about your inquiry..."
                   />
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, ease: easings.entry, delay: 1.0 }}
+                <motion.button
+                  type="submit"
+                  className="w-full inline-flex items-center justify-center px-6 py-4 text-base font-semibold text-black bg-primary rounded-xl hover:bg-primary-light transition-colors duration-200"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
                 >
-                  <motion.button
-                    type="submit"
-                    className="w-full inline-flex items-center justify-center px-6 py-3 text-lg font-bold text-white bg-[#E65C00] rounded-lg hover:bg-[#ff6a00] transition-colors duration-200"
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ duration: 0.2, ease: easings.primary }}
-                  >
-                    Send Message
-                    <Send className="ml-2 w-5 h-5" />
-                  </motion.button>
-                </motion.div>
+                  Send Message
+                  <Send className="ml-2 w-5 h-5" />
+                </motion.button>
               </form>
             </motion.div>
           </div>
