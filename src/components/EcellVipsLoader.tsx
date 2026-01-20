@@ -7,11 +7,11 @@ const CINEMATIC_EASING = {
   growth: [0.19, 1, 0.22, 1],
 };
 
-// Timeline durations (in seconds)
+// Timeline durations (in seconds) - Optimized for faster load
 const TIMELINE = {
-  EMERGENCE_END: 0.8,
-  PRESENCE_END: 1.4,
-  TOTAL: 2.4,
+  EMERGENCE_END: 0.4,
+  PRESENCE_END: 0.7,
+  TOTAL: 1.2,
 };
 
 interface EcellVipsLoaderProps {
@@ -105,8 +105,8 @@ export default function EcellVipsLoader({ onComplete }: EcellVipsLoaderProps) {
             className="text-white font-bold select-none inline-block"
             style={{
               fontSize: 'clamp(2rem, 6vw, 4.5rem)',
-              fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              letterSpacing: char === ' ' ? '0.3em' : '0.05em',
+              fontFamily: '"Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              letterSpacing: char === ' ' ? '0.3em' : '0.02em',
               display: char === ' ' ? 'inline' : 'inline-block',
               minWidth: char === ' ' ? '0.5em' : 'auto',
             }}
@@ -122,18 +122,18 @@ export default function EcellVipsLoader({ onComplete }: EcellVipsLoaderProps) {
             }}
             transition={{
               opacity: {
-                duration: 0.4,
-                delay: index * 0.04,
+                duration: 0.25,
+                delay: index * 0.02,
                 ease: CINEMATIC_EASING.emergence,
               },
               y: {
-                duration: 0.5,
-                delay: index * 0.04,
+                duration: 0.3,
+                delay: index * 0.02,
                 ease: CINEMATIC_EASING.emergence,
               },
               rotateX: {
-                duration: 0.5,
-                delay: index * 0.04,
+                duration: 0.3,
+                delay: index * 0.02,
                 ease: CINEMATIC_EASING.emergence,
               },
             }}
