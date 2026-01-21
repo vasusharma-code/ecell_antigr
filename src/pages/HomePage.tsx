@@ -1,69 +1,115 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Rocket, Users, Zap, ChevronDown } from 'lucide-react';
+import { ArrowRight, Rocket, Users, Zap, Circle } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
-import Antigravity from '../components/Antigravity';
 
-// Animation configuration
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-};
+// Elegant floating shape component
+function ElegantShape({
+  className = '',
+  delay = 0,
+  width = 400,
+  height = 100,
+  rotate = 0,
+  color = 'rgba(188, 179, 223, 0.15)',
+}: {
+  className?: string;
+  delay?: number;
+  width?: number;
+  height?: number;
+  rotate?: number;
+  color?: string;
+}) {
+  return (
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: -150,
+        rotate: rotate - 15,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        rotate: rotate,
+      }}
+      transition={{
+        duration: 2.4,
+        delay,
+        ease: [0.23, 0.86, 0.39, 0.96],
+        opacity: { duration: 1.2 },
+      }}
+      className={`absolute ${className}`}
+    >
+      <motion.div
+        animate={{
+          y: [0, 15, 0],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        style={{ width, height }}
+        className="relative"
+      >
+        <div
+          className="absolute inset-0 rounded-full backdrop-blur-[2px] border-2 border-white/[0.15]"
+          style={{
+            background: `linear-gradient(to right, ${color}, transparent)`,
+            boxShadow: '0 8px 32px 0 rgba(255,255,255,0.1)',
+          }}
+        >
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2), transparent 70%)',
+            }}
+          />
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
-const staggerContainer = {
-  animate: {
+// Animation variants
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
     transition: {
-      staggerChildren: 0.1,
+      duration: 1,
+      delay: 0.5 + i * 0.2,
+      ease: [0.25, 0.4, 0.25, 1],
     },
-  },
+  }),
 };
 
-// Scroll reveal animation variants
 const sectionReveal = {
-  hidden: { 
-    opacity: 0, 
-    y: 60,
-    scale: 0.95
-  },
-  visible: { 
-    opacity: 1, 
+  hidden: { opacity: 0, y: 60, scale: 0.95 },
+  visible: {
+    opacity: 1,
     y: 0,
     scale: 1,
     transition: {
       duration: 0.8,
-      ease: [0.22, 1, 0.36, 1]
-    }
-  }
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
 };
 
 const cardReveal = {
-  hidden: { 
-    opacity: 0, 
-    y: 40,
-    scale: 0.9
-  },
-  visible: (i: number) => ({ 
-    opacity: 1, 
+  hidden: { opacity: 0, y: 40, scale: 0.9 },
+  visible: (i: number) => ({
+    opacity: 1,
     y: 0,
     scale: 1,
     transition: {
       duration: 0.6,
       delay: i * 0.15,
-      ease: [0.22, 1, 0.36, 1]
-    }
-  })
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
 };
-
-// Multi-color palette like the Google Antigravity (blue to red/pink gradient)
-const particleColors = [
-  '#6366f1', // Indigo/Blue (top)
-  '#818cf8', // Light Indigo
-  '#a78bfa', // Purple
-  '#c084fc', // Light Purple
-  '#e879f9', // Pink
-  '#f472b6', // Rose
-  '#fb7185', // Red-Pink (bottom)
-];
 
 const pillars = [
   {
@@ -91,88 +137,120 @@ const stats = [
 ];
 
 export default function HomePage() {
-  const scrollToContent = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth',
-    });
-  };
-
   return (
     <PageWrapper>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Antigravity Background with multi-colors */}
-        <div className="absolute inset-0 z-0">
-          <Antigravity
-            count={260}
-            magnetRadius={12}
-            ringRadius={9}
-            waveSpeed={0.25}
-            waveAmplitude={0.6}
-            particleSize={1.35}
-            lerpSpeed={0.18}
-            colors={particleColors}
-            autoAnimate
-            particleVariance={0.8}
-            rotationSpeed={0}
-            depthFactor={1}
-            pulseSpeed={2}
-            particleShape="capsule"
-            fieldStrength={12}
-            style={{ width: '100%', height: '100%' }}
+      {/* Hero Section with Geometric Shapes */}
+      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#030303]">
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] via-transparent to-violet-500/[0.05] blur-3xl" />
+
+        {/* Floating geometric shapes */}
+        <div className="absolute inset-0 overflow-hidden">
+          <ElegantShape
+            delay={0.3}
+            width={600}
+            height={140}
+            rotate={12}
+            color="rgba(188, 179, 223, 0.15)"
+            className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
+          />
+
+          <ElegantShape
+            delay={0.5}
+            width={500}
+            height={120}
+            rotate={-15}
+            color="rgba(139, 92, 246, 0.15)"
+            className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
+          />
+
+          <ElegantShape
+            delay={0.4}
+            width={300}
+            height={80}
+            rotate={-8}
+            color="rgba(99, 102, 241, 0.15)"
+            className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
+          />
+
+          <ElegantShape
+            delay={0.6}
+            width={200}
+            height={60}
+            rotate={20}
+            color="rgba(208, 201, 232, 0.15)"
+            className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
+          />
+
+          <ElegantShape
+            delay={0.7}
+            width={150}
+            height={40}
+            rotate={-25}
+            color="rgba(217, 70, 239, 0.15)"
+            className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
           />
         </div>
-        
-        {/* Hero Content - pointer-events-none lets mouse pass through to canvas */}
-        <div className="relative z-10 text-center max-w-5xl mx-auto px-6 pt-16 pointer-events-none">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            animate="animate"
-          >
+
+        {/* Hero Content */}
+        <div className="relative z-10 container mx-auto px-4 md:px-6">
+          <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
             <motion.div
-              variants={fadeInUp}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center px-4 py-2 mb-8 border border-primary/30 rounded-full"
+              custom={0}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8 md:mb-12"
             >
-              <span className="w-2 h-2 bg-primary rounded-full mr-3 animate-pulse" />
-              <span className="text-sm font-medium text-neutral-300 tracking-wide uppercase">
+              <Circle className="h-2 w-2 fill-primary" />
+              <span className="text-sm text-white/60 tracking-wide">
                 Entrepreneurship Cell, VIPS
               </span>
             </motion.div>
 
             {/* Main Heading */}
-            <motion.h1
-              variants={fadeInUp}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-[1.1] tracking-tight"
+            <motion.div
+              custom={1}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
             >
-              Where Ideas
-              <br />
-              <span className="text-primary glow-text">Defy Gravity</span>
-            </motion.h1>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8 tracking-tight">
+                <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
+                  Where Ideas
+                </span>
+                <br />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-white/90 to-violet-400">
+                  Defy Gravity
+                </span>
+              </h1>
+            </motion.div>
 
             {/* Subheading */}
-            <motion.p
-              variants={fadeInUp}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg md:text-xl text-neutral-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+            <motion.div
+              custom={2}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
             >
-              We cultivate the next generation of entrepreneurs. From ideation to execution, 
-              we provide the launchpad for ventures that shape tomorrow.
-            </motion.p>
+              <p className="text-base sm:text-lg md:text-xl text-white/40 mb-10 leading-relaxed font-light tracking-wide max-w-2xl mx-auto px-4">
+                We cultivate the next generation of entrepreneurs. From ideation to execution,
+                we provide the launchpad for ventures that shape tomorrow.
+              </p>
+            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
-              variants={fadeInUp}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              custom={3}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <Link to="/contact" className="pointer-events-auto">
+              <Link to="/contact">
                 <motion.button
-                  className="group inline-flex items-center px-8 py-4 text-base font-semibold text-black bg-primary rounded-lg transition-all duration-300 hover:bg-primary-light shadow-lg shadow-primary/25 hover:shadow-primary/40"
+                  className="group inline-flex items-center px-8 py-4 text-base font-semibold text-black bg-primary rounded-lg transition-all duration-300 hover:bg-primary-light shadow-lg shadow-primary/25"
                   whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(188, 179, 223, 0.5)' }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -180,10 +258,10 @@ export default function HomePage() {
                   <ArrowRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
                 </motion.button>
               </Link>
-              
-              <Link to="/events" className="pointer-events-auto">
+
+              <Link to="/events">
                 <motion.button
-                  className="inline-flex items-center px-8 py-4 text-base font-semibold text-neutral-300 border border-primary/30 rounded-lg transition-all duration-300 hover:border-primary hover:text-primary hover:shadow-lg hover:shadow-primary/20"
+                  className="inline-flex items-center px-8 py-4 text-base font-semibold text-white/70 border border-white/10 rounded-lg transition-all duration-300 hover:border-primary/50 hover:text-primary hover:bg-white/[0.02]"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -191,28 +269,15 @@ export default function HomePage() {
                 </motion.button>
               </Link>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.button
-          onClick={scrollToContent}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-neutral-500 hover:text-primary transition-colors duration-300 pointer-events-auto z-20"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <ChevronDown className="w-8 h-8" />
-          </motion.div>
-        </motion.button>
+        {/* Bottom gradient fade */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-[#030303]/80 pointer-events-none" />
       </section>
 
       {/* Stats Section */}
-      <motion.section 
+      <motion.section
         className="py-20 px-6 border-t border-neutral-800"
         initial="hidden"
         whileInView="visible"
@@ -220,13 +285,7 @@ export default function HomePage() {
         variants={sectionReveal}
       >
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: '-100px' }}
-            variants={staggerContainer}
-          >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -237,7 +296,7 @@ export default function HomePage() {
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2 glow-text">
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
                   {stat.value}
                 </div>
                 <div className="text-sm text-neutral-500 uppercase tracking-wider">
@@ -245,12 +304,12 @@ export default function HomePage() {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </motion.section>
 
       {/* Pillars Section */}
-      <motion.section 
+      <motion.section
         className="py-24 px-6"
         initial="hidden"
         whileInView="visible"
@@ -266,7 +325,7 @@ export default function HomePage() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              The <span className="text-primary glow-text">Foundation</span>
+              The <span className="text-primary">Foundation</span>
             </h2>
             <p className="text-neutral-400 max-w-xl mx-auto">
               Our three-pillar approach to nurturing entrepreneurial excellence
@@ -277,7 +336,7 @@ export default function HomePage() {
             {pillars.map((pillar, index) => (
               <motion.div
                 key={pillar.title}
-                className="group p-8 bg-neutral-900/50 border border-neutral-800 rounded-2xl transition-all duration-300 hover:border-primary/50 hover:bg-neutral-900 hover:shadow-xl hover:shadow-primary/10 game-card neon-border"
+                className="group p-8 bg-neutral-900/50 border border-neutral-800 rounded-2xl transition-all duration-300 hover:border-primary/50 hover:bg-neutral-900"
                 custom={index}
                 variants={cardReveal}
                 initial="hidden"
@@ -285,7 +344,7 @@ export default function HomePage() {
                 viewport={{ once: true, amount: 0.3 }}
                 whileHover={{ y: -8, scale: 1.02 }}
               >
-                <div className="w-12 h-12 mb-6 flex items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-black group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-300">
+                <div className="w-12 h-12 mb-6 flex items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-black transition-all duration-300">
                   <pillar.icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-primary transition-colors duration-300">
@@ -301,7 +360,7 @@ export default function HomePage() {
       </motion.section>
 
       {/* CTA Section */}
-      <motion.section 
+      <motion.section
         className="py-24 px-6 border-t border-neutral-800"
         initial="hidden"
         whileInView="visible"
@@ -319,12 +378,12 @@ export default function HomePage() {
               Ready to Launch Your Idea?
             </h2>
             <p className="text-neutral-400 mb-10 max-w-xl mx-auto">
-              Join a community of ambitious builders, innovators, and dreamers. 
+              Join a community of ambitious builders, innovators, and dreamers.
               Your entrepreneurial journey starts here.
             </p>
             <Link to="/contact">
               <motion.button
-                className="group inline-flex items-center px-10 py-5 text-lg font-semibold text-black bg-primary rounded-lg transition-all duration-300 hover:bg-primary-light shadow-lg shadow-primary/25 hover:shadow-primary/50"
+                className="group inline-flex items-center px-10 py-5 text-lg font-semibold text-black bg-primary rounded-lg transition-all duration-300 hover:bg-primary-light shadow-lg shadow-primary/25"
                 whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(188, 179, 223, 0.6)' }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -337,7 +396,7 @@ export default function HomePage() {
       </motion.section>
 
       {/* Footer */}
-      <motion.footer 
+      <motion.footer
         className="py-12 px-6 border-t border-neutral-800"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
