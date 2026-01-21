@@ -388,8 +388,8 @@ export default function MembersPage() {
 
             {/* Branch connector from Core to Sections */}
             <div className="flex flex-col items-center mt-8">
-              <div className="w-px h-10 bg-neutral-600/60" />
-              <div className="w-[90%] h-px bg-neutral-600/60" />
+              <div className="w-px h-10 bg-primary/40" />
+              <div className="w-[90%] h-px bg-primary/40" />
             </div>
           </div>
 
@@ -399,7 +399,7 @@ export default function MembersPage() {
               {sections.map((section, sectionIndex) => (
                 <div key={section.name} className="flex flex-col items-center">
                   {/* Vertical connector from horizontal line */}
-                  <div className="w-px h-8 bg-neutral-600/60" />
+                  <div className="w-px h-8 bg-primary/30" />
                   
                   {/* Section Label */}
                   <motion.div
@@ -428,7 +428,7 @@ export default function MembersPage() {
                   </div>
 
                   {/* Vertical branch line to members */}
-                  <div className="w-px h-8 bg-neutral-600/50" />
+                  <div className="w-px h-8 bg-primary/20" />
 
                   {/* LEVEL 3: Members - Grid layout */}
                   <div className="grid grid-cols-2 gap-4 mt-4">
