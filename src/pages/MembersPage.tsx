@@ -66,7 +66,7 @@ const sections = [
   {
     name: 'Operations',
     heads: [
-      { name: 'Diya Virmani', role: 'Head', image: '/members/Diya Virmani.jpeg', linkedin: '#', quote: '"Efficiency is doing things right."' },
+      { name: 'Diya Virmani', role: 'Head', image: '/members/Diya Virmani(1).jpeg', linkedin: '#', quote: '"Efficiency is doing things right."' },
       { name: 'Shyamli Rana', role: 'HR', image: '/heads/Shyamli.jpg', linkedin: '#', quote: '"Smooth operations, seamless success."' },
     ],
     members: [
@@ -80,7 +80,7 @@ const sections = [
     name: 'Partnership & Alliances',
     heads: [
       { name: 'Anshuman Dutta', role: 'Head', image: '/members/Anshuman.jpg', linkedin: '#', quote: '"Strategy is everything."' },
-      { name: 'Piyush Malhotra', role: 'Head', image: '/members/Anshuman.jpg', linkedin: '#', quote: '"Building bridges that last."' },
+      { name: 'Piyush Malhotra', role: 'Head', image: '/members/Piyush Malhotra.jpeg', linkedin: '#', quote: '"Building bridges that last."' },
     ],
     members: [
       { name: 'Divya T.', image: 'https://images.pexels.com/photos/1758144/pexels-photo-1758144.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Connections create opportunities."' },
