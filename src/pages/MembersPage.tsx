@@ -11,39 +11,39 @@ const fadeIn = {
 // Core Team - 5 members at the very top
 const coreTeam = [
   {
-    name: 'Arjun Sharma',
+    name: 'Pranay-Vohra',
     role: 'President',
-    image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1',
+    image: '/heads/Pranay-Vohra.jpeg',
     linkedin: '#',
     quote: '"Innovation distinguishes between a leader and a follower."',
   },
   {
-    name: 'Priya Patel',
-    role: 'Vice President',
-    image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1',
+    name: 'Sambhav Thakkar',
+    role: 'President',
+    image: '/members/Sambhav Thakkar.jpg',
     linkedin: '#',
     quote: '"Success is not final, failure is not fatal."',
   },
   {
-    name: 'Rahul Singh',
-    role: 'General Secretary',
-    image: 'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1',
+    name: 'Charvi Gupta',
+    role: 'Vice President',
+    image: '/members/Charvi Gupta.jpg',
     linkedin: '#',
-    quote: '"The best way to predict the future is to create it."',
+    quote: '"Success is not final, failure is not fatal."',
   },
   {
-    name: 'Ananya Gupta',
-    role: 'Treasurer',
-    image: 'https://images.pexels.com/photos/1542085/pexels-photo-1542085.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1',
+    name: 'Sarthak Jha',
+    role: 'Vice President',
+    image: '/members/Sarthak Jha.jpg',
     linkedin: '#',
-    quote: '"Financial wisdom is the foundation of every great venture."',
+    quote: '"Success is not final, failure is not fatal."',
   },
   {
-    name: 'Vikram Mehta',
-    role: 'Joint Secretary',
-    image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1',
+    name: 'Abhishek Madaan',
+    role: 'Vice President',
+    image: '/members/Abhishek Madaan.jpeg',
     linkedin: '#',
-    quote: '"Collaboration is the key to achieving the extraordinary."',
+    quote: '"Success is not final, failure is not fatal."',
   },
 ];
 
@@ -52,8 +52,8 @@ const sections = [
   {
     name: 'Technology & Innovation',
     heads: [
-      { name: 'Dev Kapoor', role: 'Head', image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', linkedin: '#', quote: '"Code is poetry written in logic."' },
-      { name: 'Sneha Reddy', role: 'Co-Head', image: 'https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', linkedin: '#', quote: '"Building tomorrow, one line at a time."' },
+      { name: 'Vasu Sharma', role: 'Head', image: '/members/Vasu Sharma.jpg', linkedin: '#', quote: '"Code is poetry written in logic."' },
+      { name: 'Pulkit Saraf', role: 'Head', image: '/members/Pulkit Saraf.jpeg', linkedin: '#', quote: '"Building tomorrow, one line at a time."' },
     ],
     members: [
       { name: 'Aarav M.', image: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Passionate about problem-solving."' },
@@ -66,8 +66,8 @@ const sections = [
   {
     name: 'Operations',
     heads: [
-      { name: 'Manav Chopra', role: 'Head', image: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', linkedin: '#', quote: '"Efficiency is doing things right."' },
-      { name: 'Zara Ahmed', role: 'Co-Head', image: 'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', linkedin: '#', quote: '"Smooth operations, seamless success."' },
+      { name: 'Diya Virmani', role: 'Head', image: '/members/Diya Virmani.jpeg', linkedin: '#', quote: '"Efficiency is doing things right."' },
+      { name: 'Shyamli Rana', role: 'HR', image: '/heads/Shyamli.jpg', linkedin: '#', quote: '"Smooth operations, seamless success."' },
     ],
     members: [
       { name: 'Vihaan T.', image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Organized chaos is still organized."' },
@@ -79,8 +79,8 @@ const sections = [
   {
     name: 'Partnership & Alliances',
     heads: [
-      { name: 'Kavya Iyer', role: 'Head', image: 'https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', linkedin: '#', quote: '"Strategy is everything."' },
-      { name: 'Sameer Khan', role: 'Co-Head', image: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', linkedin: '#', quote: '"Building bridges that last."' },
+      { name: 'Anshuman Dutta', role: 'Head', image: '/members/Anshuman.jpg', linkedin: '#', quote: '"Strategy is everything."' },
+      { name: 'Piyush Malhotra', role: 'Head', image: '/members/Anshuman.jpg', linkedin: '#', quote: '"Building bridges that last."' },
     ],
     members: [
       { name: 'Divya T.', image: 'https://images.pexels.com/photos/1758144/pexels-photo-1758144.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Connections create opportunities."' },
@@ -91,8 +91,8 @@ const sections = [
   {
     name: 'R&D',
     heads: [
-      { name: 'Nisha Malhotra', role: 'Head', image: 'https://images.pexels.com/photos/1520760/pexels-photo-1520760.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', linkedin: '#', quote: '"Curiosity drives discovery."' },
-      { name: 'Vivek Saxena', role: 'Co-Head', image: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', linkedin: '#', quote: '"Research today, revolution tomorrow."' },
+      { name: 'Abhishek Iyer', role: 'Head', image: '/members/Abhishek Iyer.jpg', linkedin: '#', quote: '"Curiosity drives discovery."' },
+      { name: 'Miraan Vahie', role: 'Head', image: '/members/Miraan Vahie.jpg', linkedin: '#', quote: '"Research today, revolution tomorrow."' },
     ],
     members: [
       { name: 'Anvi S.', image: 'https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Questions lead to answers."' },
@@ -104,8 +104,8 @@ const sections = [
   {
     name: 'Finance',
     heads: [
-      { name: 'Ria Sharma', role: 'Head', image: 'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', linkedin: '#', quote: '"Numbers tell the real story."' },
-      { name: 'Arjun Das', role: 'Co-Head', image: 'https://images.pexels.com/photos/2232981/pexels-photo-2232981.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', linkedin: '#', quote: '"Financial clarity, strategic growth."' },
+      { name: 'Raghav Gulati', role: 'Head', image: '/members/Raghav Gulati.png', linkedin: '#', quote: '"Numbers tell the real story."' },
+      { name: 'Akshar Goyal', role: 'Head', image: '/members/Akshar Goyal.jpg', linkedin: '#', quote: '"Financial clarity, strategic growth."' },
     ],
     members: [
       { name: 'Avni M.', image: 'https://images.pexels.com/photos/1542085/pexels-photo-1542085.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Every penny counts."' },
@@ -116,8 +116,8 @@ const sections = [
   {
     name: 'Brand & Communications',
     heads: [
-      { name: 'Shruti Verma', role: 'Head', image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', linkedin: '#', quote: '"Your story, amplified."' },
-      { name: 'Aditya Nair', role: 'Co-Head', image: 'https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', linkedin: '#', quote: '"Communication is connection."' },
+      { name: 'Kanishka Sharma', role: 'Head', image: '/members/Kanishka Sharma.JPG', linkedin: '#', quote: '"Your story, amplified."' },
+      { name: 'Vanya Garg', role: 'Head', image: '/members/Vannya Garg.jpg', linkedin: '#', quote: '"Communication is connection."' },
     ],
     members: [
       { name: 'Tanya R.', image: 'https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Words shape perceptions."' },
