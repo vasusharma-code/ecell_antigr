@@ -11,20 +11,6 @@ const fadeIn = {
 // Core Team - 5 members at the very top
 const coreTeam = [
   {
-    name: 'Pranay-Vohra',
-    role: 'President',
-    image: '/heads/Pranay-Vohra.jpeg',
-    linkedin: '#',
-    quote: '"Innovation distinguishes between a leader and a follower."',
-  },
-  {
-    name: 'Sambhav Thakkar',
-    role: 'President',
-    image: '/members/Sambhav Thakkar.jpg',
-    linkedin: '#',
-    quote: '"Success is not final, failure is not fatal."',
-  },
-  {
     name: 'Charvi Gupta',
     role: 'Vice President',
     image: '/members/Charvi Gupta.jpg',
@@ -32,11 +18,29 @@ const coreTeam = [
     quote: '"Success is not final, failure is not fatal."',
   },
   {
+    name: 'Sambhav Thakkar',
+    role: 'President',
+    image: '/members/Sambhav Thakkar.jpg',
+    linkedin: '#',
+    quote: '"Success is not final, failure is not fatal."',
+    objectPosition: 'center 10%'
+  },
+  {
+    name: 'Pranay-Vohra',
+    role: 'President',
+    image: '/heads/Pranay-Vohra.jpeg',
+    linkedin: '#',
+    quote: '"Innovation distinguishes between a leader and a follower."',
+    zoom: 1.5,
+    objectPosition: 'center 10%'
+  },
+  {
     name: 'Sarthak Jha',
     role: 'Vice President',
     image: '/members/Sarthak Jha.jpg',
     linkedin: '#',
     quote: '"Success is not final, failure is not fatal."',
+    objectPosition: 'center 10%',
   },
   {
     name: 'Abhishek Madaan',
@@ -44,6 +48,7 @@ const coreTeam = [
     image: '/members/Abhishek Madaan.jpeg',
     linkedin: '#',
     quote: '"Success is not final, failure is not fatal."',
+    objectPosition: 'center 20%'
   },
 ];
 
@@ -66,8 +71,7 @@ const sections = [
   {
     name: 'Operations',
     heads: [
-      { name: 'Diya Virmani', role: 'Head', image: '/members/Diya Virmani(1).jpeg', linkedin: '#', quote: '"Efficiency is doing things right."' },
-      { name: 'Shyamli Rana', role: 'HR', image: '/heads/Shyamli.jpg', linkedin: '#', quote: '"Smooth operations, seamless success."' },
+      { name: 'Diya Virmani', role: 'Head', image: '/members/Diya Virmani(1).jpeg', linkedin: '#', quote: '"Efficiency is doing things right."', zoom: 2.3 },
     ],
     members: [
       { name: 'Vihaan T.', image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Organized chaos is still organized."' },
@@ -91,7 +95,7 @@ const sections = [
   {
     name: 'R&D',
     heads: [
-      { name: 'Abhishek Iyer', role: 'Head', image: '/members/Abhishek Iyer.jpg', linkedin: '#', quote: '"Curiosity drives discovery."' },
+      { name: 'Abhishek Iyer', role: 'Head', image: '/members/Abhishek Iyer.jpg', linkedin: '#', quote: '"Curiosity drives discovery."', objectPosition: 'center 10%' },
       { name: 'Miraan Vahie', role: 'Head', image: '/members/Miraan Vahie.jpg', linkedin: '#', quote: '"Research today, revolution tomorrow."' },
     ],
     members: [
@@ -138,6 +142,8 @@ interface MemberData {
   image: string;
   linkedin?: string;
   quote?: string;
+  zoom?: number;
+  objectPosition?: string;
 }
 
 // Modal Component for member details
@@ -186,6 +192,10 @@ const MemberModal = ({
             src={member.image}
             alt={member.name}
             className="w-full h-full object-cover"
+            style={{ 
+              transform: member.zoom ? `scale(${member.zoom})` : undefined,
+              objectPosition: member.objectPosition || 'center'
+            }}
           />
         </motion.div>
 
@@ -245,6 +255,8 @@ const MemberNode = ({
   size = 'md', 
   delay = 0,
   onClick,
+  zoom,
+  objectPosition,
 }: { 
   name: string; 
   role?: string; 
@@ -254,6 +266,8 @@ const MemberNode = ({
   color?: string;
   delay?: number;
   onClick?: () => void;
+  zoom?: number;
+  objectPosition?: string;
 }) => {
   const sizeClasses = {
     lg: 'w-20 h-20 md:w-24 md:h-24',
@@ -290,6 +304,10 @@ const MemberNode = ({
             src={image}
             alt={name}
             className="w-full h-full object-cover"
+            style={{ 
+              transform: zoom ? `scale(${zoom})` : undefined,
+              objectPosition: objectPosition || 'center'
+            }}
           />
         </motion.div>
       </div>
