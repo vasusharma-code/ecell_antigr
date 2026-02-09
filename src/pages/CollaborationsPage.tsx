@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Building, Handshake, Globe, ArrowRight } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
 import { easings } from '../config/animations';
 
@@ -44,17 +43,14 @@ const collaborations = [
 
 const stats = [
   {
-    icon: Building,
     value: '25+',
     label: 'Industry Partners',
   },
   {
-    icon: Handshake,
     value: '100+',
     label: 'Mentor Connections',
   },
   {
-    icon: Globe,
     value: '15+',
     label: 'Countries Reached',
   },
@@ -95,9 +91,6 @@ export default function CollaborationsPage() {
                 }}
                 whileHover={{ y: -4 }}
               >
-                <div className="w-16 h-16 mx-auto mb-4 p-4 rounded-lg bg-[#E65C00]/10 text-[#E65C00]">
-                  <stat.icon className="w-full h-full" />
-                </div>
                 <h3 className="text-4xl font-bold mb-2 text-[#E65C00]">{stat.value}</h3>
                 <p className="text-gray-400 font-medium">{stat.label}</p>
               </motion.div>
@@ -138,12 +131,11 @@ export default function CollaborationsPage() {
                 </p>
 
                 <motion.button
-                  className="inline-flex items-center text-[#E65C00] hover:text-[#ff6a00] font-medium text-sm group-hover:gap-2 gap-1 transition-all duration-200"
+                  className="text-[#E65C00] hover:text-[#ff6a00] font-medium text-sm transition-all duration-200"
                   whileHover={{ x: 2 }}
                   transition={{ duration: 0.2, ease: easings.primary }}
                 >
-                  Learn More
-                  <ArrowRight className="w-3 h-3" />
+                  Learn More →
                 </motion.button>
               </motion.div>
             ))}

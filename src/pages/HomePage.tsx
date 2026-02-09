@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Rocket, Users, Zap, Circle } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
 
 // Elegant floating shape component
@@ -113,17 +112,14 @@ const cardReveal = {
 
 const pillars = [
   {
-    icon: Rocket,
     title: 'Ideate',
     description: 'Transform raw ideas into viable business concepts through structured mentorship and workshops.',
   },
   {
-    icon: Zap,
     title: 'Build',
     description: 'Develop prototypes and MVPs with access to resources, funding guidance, and technical expertise.',
   },
   {
-    icon: Users,
     title: 'Scale',
     description: 'Connect with investors, industry leaders, and a network of founders to accelerate growth.',
   },
@@ -134,6 +130,22 @@ const stats = [
   { value: '50+', label: 'Events' },
   { value: '25+', label: 'Startups' },
   { value: '10L+', label: 'Funding Raised' },
+];
+
+// Sponsor logos
+const sponsors = [
+  '/sponsers/ciena-logo.png',
+  '/sponsers/dashevents.jpeg',
+  '/sponsers/finlatics-logo.png',
+  '/sponsers/lazer-crazer-logo.png',
+  '/sponsers/nasscom-logo.png',
+  '/sponsers/parchaii.jpeg',
+  '/sponsers/skill-circle-logo.webp',
+  '/sponsers/thinkstreet.png',
+  '/sponsers/top-one-percent-logo.webp',
+  '/sponsers/Travell-while-learning-logo.jpeg',
+  '/sponsers/vlcc.png',
+  '/sponsers/Waspire.jpeg',
 ];
 
 export default function HomePage() {
@@ -203,7 +215,7 @@ export default function HomePage() {
               animate="visible"
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8 md:mb-12"
             >
-              <Circle className="h-2 w-2 fill-primary" />
+              <span className="h-2 w-2 rounded-full bg-primary" />
               <span className="text-sm text-white/60 tracking-wide">
                 Entrepreneurship Cell, VIPS
               </span>
@@ -254,8 +266,7 @@ export default function HomePage() {
                   whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(188, 179, 223, 0.5)' }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Join the Movement
-                  <ArrowRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
+                  Join the Movement →
                 </motion.button>
               </Link>
 
@@ -275,6 +286,60 @@ export default function HomePage() {
         {/* Bottom gradient fade */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-[#030303]/80 pointer-events-none" />
       </section>
+
+      {/* Sponsors Section */}
+      <motion.section
+        className="py-16 border-t border-neutral-800 overflow-hidden"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="max-w-6xl mx-auto px-6 mb-10">
+          <motion.h2
+            className="text-center text-2xl md:text-3xl font-bold mb-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Our <span className="text-primary">Sponsors</span>
+          </motion.h2>
+          <motion.p
+            className="text-center text-neutral-500 text-sm"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Trusted by industry leaders
+          </motion.p>
+        </div>
+
+        {/* Infinite scroll container */}
+        <div className="relative">
+          {/* Gradient overlays for smooth edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#030303] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#030303] to-transparent z-10 pointer-events-none" />
+
+          {/* Scrolling track */}
+          <div className="flex animate-scroll items-center">
+            {/* Repeat logos 4 times for seamless infinite loop */}
+            {[...sponsors, ...sponsors, ...sponsors, ...sponsors].map((sponsor, index) => (
+              <div
+                key={`sponsor-${index}`}
+                className="flex-shrink-0 mx-10 flex items-center justify-center"
+              >
+                <img
+                  src={sponsor}
+                  alt={`Sponsor ${(index % sponsors.length) + 1}`}
+                  className="h-14 w-auto object-contain opacity-80 hover:opacity-100 transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
 
       {/* Stats Section */}
       <motion.section
@@ -344,10 +409,7 @@ export default function HomePage() {
                 viewport={{ once: true, amount: 0.3 }}
                 whileHover={{ y: -8, scale: 1.02 }}
               >
-                <div className="w-12 h-12 mb-6 flex items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-black transition-all duration-300">
-                  <pillar.icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-primary transition-colors duration-300">
                   {pillar.title}
                 </h3>
                 <p className="text-neutral-400 leading-relaxed">
@@ -387,8 +449,7 @@ export default function HomePage() {
                 whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(188, 179, 223, 0.6)' }}
                 whileTap={{ scale: 0.95 }}
               >
-                Get Started Today
-                <ArrowRight className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
+                Get Started Today →
               </motion.button>
             </Link>
           </motion.div>

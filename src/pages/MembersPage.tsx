@@ -1,12 +1,26 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Linkedin, Users, X } from 'lucide-react';
+import { Linkedin, X } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
 };
+
+// Unified color for tree branches
+const BRANCH_COLOR = '#bcb3df';
+
+// Member type for the modal
+interface MemberData {
+  name: string;
+  role?: string;
+  image: string;
+  linkedin?: string;
+  quote?: string;
+  zoom?: number;
+  objectPosition?: string;
+}
 
 // Core Team - 5 members at the very top
 const coreTeam = [
@@ -53,32 +67,25 @@ const coreTeam = [
 ];
 
 // 6 Sections with 2 Heads each
-const sections = [
+const sections: {
+  name: string;
+  heads: MemberData[];
+  members: MemberData[];
+}[] = [
   {
     name: 'Technology & Innovation',
     heads: [
       { name: 'Vasu Sharma', role: 'Head', image: '/members/Vasu Sharma.jpg', linkedin: '#', quote: '"Code is poetry written in logic."' },
       { name: 'Pulkit Saraf', role: 'Head', image: '/members/Pulkit Saraf.jpeg', linkedin: '#', quote: '"Building tomorrow, one line at a time."' },
     ],
-    members: [
-      { name: 'Aarav M.', image: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Passionate about problem-solving."' },
-      { name: 'Ishita S.', image: 'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Learning never exhausts the mind."' },
-      { name: 'Rohan K.', image: 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Innovation is my middle name."' },
-      { name: 'Meera P.', image: 'https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Debugging life, one bug at a time."' },
-      { name: 'Karan V.', image: 'https://images.pexels.com/photos/2128807/pexels-photo-2128807.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Tech enthusiast and lifelong learner."' },
-    ],
+    members: [],
   },
   {
     name: 'Operations',
     heads: [
       { name: 'Diya Virmani', role: 'Head', image: '/members/Diya Virmani(1).jpeg', linkedin: '#', quote: '"Efficiency is doing things right."', zoom: 2.3 },
     ],
-    members: [
-      { name: 'Vihaan T.', image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Organized chaos is still organized."' },
-      { name: 'Kiara S.', image: 'https://images.pexels.com/photos/1382734/pexels-photo-1382734.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Teamwork makes the dream work."' },
-      { name: 'Reyansh M.', image: 'https://images.pexels.com/photos/2128807/pexels-photo-2128807.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Details matter, always."' },
-      { name: 'Aanya R.', image: 'https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Logistics is an art form."' },
-    ],
+    members: [],
   },
   {
     name: 'Partnership & Alliances',
@@ -86,11 +93,7 @@ const sections = [
       { name: 'Anshuman Dutta', role: 'Head', image: '/members/Anshuman.jpg', linkedin: '#', quote: '"Strategy is everything."' },
       { name: 'Piyush Malhotra', role: 'Head', image: '/members/Piyush Malhotra.jpeg', linkedin: '#', quote: '"Building bridges that last."' },
     ],
-    members: [
-      { name: 'Divya T.', image: 'https://images.pexels.com/photos/1758144/pexels-photo-1758144.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Connections create opportunities."' },
-      { name: 'Harsh M.', image: 'https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Networking is an investment."' },
-      { name: 'Riya C.', image: 'https://images.pexels.com/photos/1642228/pexels-photo-1642228.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Collaboration over competition."' },
-    ],
+    members: [],
   },
   {
     name: 'R&D',
@@ -98,12 +101,7 @@ const sections = [
       { name: 'Abhishek Iyer', role: 'Head', image: '/members/Abhishek Iyer.jpg', linkedin: '#', quote: '"Curiosity drives discovery."', objectPosition: 'center 10%' },
       { name: 'Miraan Vahie', role: 'Head', image: '/members/Miraan Vahie.jpg', linkedin: '#', quote: '"Research today, revolution tomorrow."' },
     ],
-    members: [
-      { name: 'Anvi S.', image: 'https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Questions lead to answers."' },
-      { name: 'Kabir R.', image: 'https://images.pexels.com/photos/1484794/pexels-photo-1484794.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Data speaks volumes."' },
-      { name: 'Sanya K.', image: 'https://images.pexels.com/photos/1308885/pexels-photo-1308885.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Explore, experiment, evolve."' },
-      { name: 'Om P.', image: 'https://images.pexels.com/photos/2379003/pexels-photo-2379003.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Innovation through investigation."' },
-    ],
+    members: [],
   },
   {
     name: 'Finance',
@@ -111,11 +109,7 @@ const sections = [
       { name: 'Raghav Gulati', role: 'Head', image: '/members/Raghav Gulati.png', linkedin: '#', quote: '"Numbers tell the real story."' },
       { name: 'Akshar Goyal', role: 'Head', image: '/members/Akshar Goyal.jpg', linkedin: '#', quote: '"Financial clarity, strategic growth."' },
     ],
-    members: [
-      { name: 'Avni M.', image: 'https://images.pexels.com/photos/1542085/pexels-photo-1542085.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Every penny counts."' },
-      { name: 'Dhruv K.', image: 'https://images.pexels.com/photos/1121796/pexels-photo-1121796.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Budget smart, grow fast."' },
-      { name: 'Simran L.', image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Precision in every transaction."' },
-    ],
+    members: [],
   },
   {
     name: 'Brand & Communications',
@@ -123,28 +117,9 @@ const sections = [
       { name: 'Kanishka Sharma', role: 'Head', image: '/members/Kanishka Sharma.JPG', linkedin: '#', quote: '"Your story, amplified."' },
       { name: 'Vanya Garg', role: 'Head', image: '/members/Vannya Garg.jpg', linkedin: '#', quote: '"Communication is connection."' },
     ],
-    members: [
-      { name: 'Tanya R.', image: 'https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Words shape perceptions."' },
-      { name: 'Aryan D.', image: 'https://images.pexels.com/photos/2340978/pexels-photo-2340978.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Brand is a promise kept."' },
-      { name: 'Pooja L.', image: 'https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Visuals speak louder."' },
-      { name: 'Nikhil B.', image: 'https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1', quote: '"Consistency builds trust."' },
-    ],
+    members: [],
   },
 ];
-
-// Unified color for tree branches
-const BRANCH_COLOR = '#bcb3df';
-
-// Member type for the modal
-interface MemberData {
-  name: string;
-  role?: string;
-  image: string;
-  linkedin?: string;
-  quote?: string;
-  zoom?: number;
-  objectPosition?: string;
-}
 
 // Modal Component for member details
 const MemberModal = ({ 
@@ -350,15 +325,6 @@ export default function MembersPage() {
             initial="initial"
             animate="animate"
           >
-            <motion.div
-              variants={fadeIn}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center px-4 py-2 mb-6 border border-primary/30 rounded-full"
-            >
-              <Users className="w-4 h-4 mr-2 text-primary" />
-              <span className="text-sm font-medium text-neutral-400">Our Team</span>
-            </motion.div>
-            
             <motion.h1
               variants={fadeIn}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -446,31 +412,35 @@ export default function MembersPage() {
                   </div>
 
                   {/* Vertical branch line to members */}
-                  <div className="w-px h-8 bg-primary/20" />
+                  {section.members.length > 0 && (
+                    <>
+                      <div className="w-px h-8 bg-primary/20" />
 
-                  {/* LEVEL 3: Members - Grid layout */}
-                  <div className="grid grid-cols-2 gap-4 mt-4">
-                    {section.members.map((member, memberIndex) => (
-                      <motion.div
-                        key={member.name}
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true, margin: "-30px" }}
-                        transition={{ 
-                          delay: sectionIndex * 0.1 + memberIndex * 0.05,
-                          type: "spring",
-                          stiffness: 150,
-                        }}
-                      >
-                        <MemberNode
-                          {...member}
-                          size="xs"
-                          delay={0}
-                          onClick={() => handleMemberClick(member)}
-                        />
-                      </motion.div>
-                    ))}
-                  </div>
+                      {/* LEVEL 3: Members - Grid layout */}
+                      <div className="grid grid-cols-2 gap-4 mt-4">
+                        {section.members.map((member, memberIndex) => (
+                          <motion.div
+                            key={member.name}
+                            initial={{ opacity: 0, scale: 0 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true, margin: "-30px" }}
+                            transition={{
+                              delay: sectionIndex * 0.1 + memberIndex * 0.05,
+                              type: "spring",
+                              stiffness: 150,
+                            }}
+                          >
+                            <MemberNode
+                              {...member}
+                              size="xs"
+                              delay={0}
+                              onClick={() => handleMemberClick(member)}
+                            />
+                          </motion.div>
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </div>
               ))}
             </div>

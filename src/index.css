@@ -208,3 +208,22 @@ p {
 .neon-border:hover::before {
   opacity: 1;
 }
+
+/* ===== Infinite Scroll Animation ===== */
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 11s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}

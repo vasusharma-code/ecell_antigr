@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Target, Eye, Heart } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
 
 const fadeIn = {
@@ -9,17 +8,14 @@ const fadeIn = {
 
 const values = [
   {
-    icon: Target,
     title: 'Our Mission',
     description: 'To foster an entrepreneurial ecosystem at VIPS that empowers students to transform innovative ideas into successful ventures while contributing to societal development.',
   },
   {
-    icon: Eye,
     title: 'Our Vision',
     description: 'To become the leading entrepreneurship cell that nurtures the next generation of innovators and change-makers who will shape the future of technology and business.',
   },
   {
-    icon: Heart,
     title: 'Our Values',
     description: 'Innovation, Integrity, Collaboration, Excellence, and Impact drive everything we do as we build a community of passionate entrepreneurs.',
   },
@@ -81,10 +77,7 @@ export default function AboutPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="w-12 h-12 mb-6 flex items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-black transition-all duration-300">
-                  <value.icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">{value.title}</h3>
+                <h3 className="text-xl font-semibold mb-4 text-white">{value.title}</h3>
                 <p className="text-neutral-400 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}

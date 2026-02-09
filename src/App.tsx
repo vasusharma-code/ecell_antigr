@@ -9,6 +9,7 @@ import CollaborationsPage from './pages/CollaborationsPage';
 import AboutPage from './pages/AboutPage';
 import MembersPage from './pages/MembersPage';
 import ContactPage from './pages/ContactPage';
+import OblivionPage from './pages/OblivionPage';
 
 function AppContent() {
   const location = useLocation();
@@ -52,6 +53,7 @@ function AppContent() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/members" element={<MembersPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/oblivion" element={<OblivionPage />} />
           </Routes>
         </AnimatePresence>
       </motion.div>

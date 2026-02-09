@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
 
 const fadeIn = {
@@ -9,19 +8,16 @@ const fadeIn = {
 
 const contactInfo = [
   {
-    icon: Mail,
     title: 'Email',
     details: 'ecell@vips.edu',
     subtitle: 'Get in touch with us',
   },
   {
-    icon: Phone,
     title: 'Phone',
     details: '+91 11 2566 2120',
     subtitle: 'Call us during office hours',
   },
   {
-    icon: MapPin,
     title: 'Address',
     details: 'VIPS, Pitampura, Delhi 110034',
     subtitle: 'Visit our campus',
@@ -38,15 +34,6 @@ export default function ContactPage() {
             initial="initial"
             animate="animate"
           >
-            <motion.div
-              variants={fadeIn}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center px-4 py-2 mb-6 border border-primary/30 rounded-full"
-            >
-              <Mail className="w-4 h-4 mr-2 text-primary" />
-              <span className="text-sm font-medium text-neutral-400">Contact</span>
-            </motion.div>
-
             <motion.h1
               variants={fadeIn}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -77,19 +64,14 @@ export default function ContactPage() {
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={info.title}
-                    className="flex items-start gap-4 p-4 bg-neutral-900/50 border border-neutral-800 rounded-xl transition-all duration-300 hover:border-primary/30"
+                    className="p-5 bg-neutral-900/50 border border-neutral-800 rounded-xl transition-all duration-300 hover:border-primary/30"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   >
-                    <div className="w-12 h-12 p-3 rounded-xl bg-primary/10 text-primary flex-shrink-0">
-                      <info.icon className="w-full h-full" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold mb-1 text-white">{info.title}</h3>
-                      <p className="text-primary font-medium mb-1">{info.details}</p>
-                      <p className="text-neutral-500 text-sm">{info.subtitle}</p>
-                    </div>
+                    <h3 className="text-sm font-medium mb-2 text-neutral-500">{info.title}</h3>
+                    <p className="text-lg font-semibold text-white mb-1">{info.details}</p>
+                    <p className="text-neutral-500 text-sm">{info.subtitle}</p>
                   </motion.div>
                 ))}
               </div>
@@ -166,12 +148,11 @@ export default function ContactPage() {
 
                 <motion.button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center px-6 py-4 text-base font-semibold text-black bg-primary rounded-xl hover:bg-primary-light transition-colors duration-200"
+                  className="w-full px-6 py-4 text-base font-semibold text-black bg-primary rounded-xl hover:bg-primary-light transition-colors duration-200"
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                 >
                   Send Message
-                  <Send className="ml-2 w-5 h-5" />
                 </motion.button>
               </form>
             </motion.div>
